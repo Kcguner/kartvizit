@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartvizit</title>
+    <meta name="description" content="Kaan Can Güner - Web Geliştirici | Dijital Kartvizit">
+    <meta name="author" content="Kaan Can Güner">
+    <meta property="og:title" content="Kaan Can Güner - Dijital Kartvizit">
+    <meta property="og:description" content="Web Geliştirici - Dijital Kartvizit">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(45deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(45deg);
+            }
+        }
+
+        @keyframes floatAlt {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(12deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(12deg);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-alt {
+            animation: floatAlt 8s ease-in-out infinite;
+        }
+
+        .shimmer-btn {
+            background: linear-gradient(110deg, #0891b2 0%, #2563eb 25%, #0891b2 50%, #2563eb 75%, #0891b2 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .social-icon {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-4px) scale(1.1);
+            filter: drop-shadow(0 8px 16px rgba(6, 182, 212, 0.4));
+        }
+
+        .card-glow {
+            box-shadow:
+                0 0 60px rgba(6, 182, 212, 0.1),
+                0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .qr-container {
+            transition: all 0.3s ease;
+        }
+
+        .qr-container:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div
+        class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+        <!-- Background geometric shapes -->
+        <div class="absolute inset-0">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 border border-cyan-500/10 animate-float"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 border border-cyan-500/10 animate-float-alt"></div>
+            <div class="absolute top-1/2 left-1/2 w-48 h-48 border border-blue-500/10 rotate-12 animate-float"></div>
+            <!-- Gradient orbs -->
+            <div class="absolute top-20 right-20 w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 left-20 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Main card -->
+        <div class="relative max-w-md w-full">
+            <div class="bg-slate-800/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 card-glow">
+                <!-- Profile photo with glow effect -->
+                <div class="flex justify-center mb-6">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 blur-xl opacity-50 animate-pulse group-hover:opacity-70 transition-opacity">
+                        </div>
+                        <div
+                            class="absolute -inset-0.5 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 opacity-75">
+                        </div>
+                        <img src="./images/3.jpeg" alt="Kaan Can Güner"
+                            class="relative w-32 h-32 rounded-full border-2 border-white/20 object-cover" />
+                    </div>
+                </div>
+
+                <!-- Name and title -->
+                <div class="text-center mb-6">
+                    <h1
+                        class="text-3xl sm:text-4xl font-bold text-white mb-2 tracking-wide bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text">
+                        KAAN CAN GÜNER
+                    </h1>
+                    <p class="text-cyan-400/80 text-lg font-medium tracking-widest uppercase">Web Geliştirici</p>
+                </div>
+
+                <!-- Save to contacts button -->
+                <button onclick="downloadVCard()"
+                    class="w-full shimmer-btn hover:brightness-110 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3 mb-8 shadow-lg shadow-cyan-500/20">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                    </svg>
+                    <span>REHBERE KAYDET</span>
+                </button>
+
+                <!-- Social media icons -->
+                <div class="flex justify-center items-center gap-5 mb-8">
+                    <!-- GitHub -->
+                    <a href="https://github.com/Kcguner" target="_blank" rel="noopener noreferrer"
+                        class="social-icon w-12 h-12 flex items-center justify-center rounded-xl bg-slate-700/50 border border-slate-600/50 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-slate-700"
+                        aria-label="GitHub">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+
+                    <!-- Phone -->
+                    <a href="tel:+905393211222"
+                        class="social-icon w-12 h-12 flex items-center justify-center rounded-xl bg-slate-700/50 border border-slate-600/50 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-slate-700"
+                        aria-label="Telefon">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:kcguner@gmail.com"
+                        class="social-icon w-12 h-12 flex items-center justify-center rounded-xl bg-slate-700/50 border border-slate-600/50 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-slate-700"
+                        aria-label="Email">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/905393211222" target="_blank" rel="noopener noreferrer"
+                        class="social-icon w-12 h-12 flex items-center justify-center rounded-xl bg-slate-700/50 border border-slate-600/50 text-slate-400 hover:text-green-400 hover:border-green-500/50 hover:bg-slate-700"
+                        aria-label="WhatsApp">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- QR Code Section -->
+                <div class="flex flex-col items-center mb-6">
+                    <div class="qr-container bg-white p-3 rounded-2xl shadow-lg">
+                        <img id="qrcode" src="./images/qrcode.png" alt="QR Code" class="w-28 h-28"
+                            onerror="this.parentElement.innerHTML='<div class=\'w-28 h-28 flex items-center justify-center text-slate-400 text-xs\'>QR Kod Ekle</div>'" />
+                    </div>
+                    <p class="text-slate-500 text-xs mt-3 flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                        </svg>
+                        <span>QR kodu tarayarak kartı paylaş</span>
+                    </p>
+                </div>
+
+                <!-- Footer -->
+                <div class="pt-6 border-t border-slate-700/50">
+                    <p class="text-slate-600 text-xs text-center">© 2026 Kaan Can Güner</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // vCard data
+        const vCardData = {
+            firstName: 'Kaan Can',
+            lastName: 'Güner',
+            title: 'Full Stack Developer',
+            phone: '+905393211222',
+            email: 'kcguner@gmail.com',
+            github: 'https://github.com/Kcguner',
+            website: window.location.href,
+            photoBase64: null
+        };
+
+        // Load profile photo as base64
+        async function loadProfilePhoto() {
+            try {
+                const response = await fetch('./images/3.jpeg');
+                const blob = await response.blob();
+                return new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                        // Remove data URL prefix, keep only base64
+                        const base64 = reader.result.split(',')[1];
+                        resolve(base64);
+                    };
+                    reader.readAsDataURL(blob);
+                });
+            } catch (error) {
+                console.error('Photo load error:', error);
+                return null;
+            }
+        }
+
+        // Initialize photo on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            vCardData.photoBase64 = await loadProfilePhoto();
+        });
+
+        // Generate vCard string (vCard 3.0 - iOS & Android compatible)
+        function generateVCard() {
+            let vcard = `BEGIN:VCARD
+VERSION:3.0
+N:${vCardData.lastName};${vCardData.firstName};;;
+FN:${vCardData.firstName} ${vCardData.lastName}
+ORG:Freelance
+TITLE:${vCardData.title}
+TEL;TYPE=CELL,VOICE:${vCardData.phone}
+EMAIL;TYPE=INTERNET,PREF:${vCardData.email}
+URL:${vCardData.github}
+URL:${vCardData.website}`;
+
+            // Add photo if available
+            if (vCardData.photoBase64) {
+                vcard += `
+PHOTO;ENCODING=b;TYPE=JPEG:${vCardData.photoBase64}`;
+            }
+
+            vcard += `
+REV:${new Date().toISOString()}
+END:VCARD`;
+            return vcard;
+        }
+
+        // Download vCard
+        function downloadVCard() {
+            const vcard = generateVCard();
+            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Kaan_Can_Guner.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            // Visual feedback
+            const btn = event.target.closest('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>KAYDEDİLDİ!</span>
+            `;
+            btn.classList.add('bg-green-500');
+
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('bg-green-500');
+            }, 2000);
+        }
+
+
+    </script>
+</body>
+
+</html>
